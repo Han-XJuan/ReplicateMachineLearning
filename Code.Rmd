@@ -1,0 +1,43 @@
+---
+title: "Code"
+author: "Hanhan"
+date: "2025-06-11"
+output: beamer_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+
+## Slide with R Output
+
+```{r cars, echo = TRUE}
+# install packages
+# install.packages(c("ggplot2","lme4","foreign","tidyverse"),
+#                  repos = "https://cloud.r-project.org",
+#                  type = "source")
+
+# load in packages
+library(lme4) 
+library(MuMIn) 
+library(foreign)
+library(tidyverse)
+
+data <- read.dta("/Users/hanhan/Desktop/CEPS数据库14-/cepsw1studentEN.dta") 
+
+
+# check data
+head(data)
+names(data)
+
+table(data$stsex)
+
+data <- data %>%
+  mutate(new_sex = ifelse(data$stsex == "Female", 0, 1))
+table(data$new_sex)
+
+
+
+```

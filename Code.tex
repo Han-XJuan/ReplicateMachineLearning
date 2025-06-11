@@ -1,0 +1,745 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  ignorenonframetext,
+]{beamer}
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{section title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{subsection title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\newif\ifbibliography
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Code},
+  pdfauthor={Hanhan},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Code}
+\author{Hanhan}
+\date{2025-06-11}
+
+\begin{document}
+\frame{\titlepage}
+
+\begin{frame}[fragile]{Slide with R Output}
+\phantomsection\label{slide-with-r-output}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# install packages}
+\CommentTok{\# install.packages(c("ggplot2","lme4","foreign","tidyverse"),}
+\CommentTok{\#                  repos = "https://cloud.r{-}project.org",}
+\CommentTok{\#                  type = "source")}
+
+\CommentTok{\# load in packages}
+\FunctionTok{library}\NormalTok{(lme4) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Loading required package: Matrix
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(MuMIn) }
+\FunctionTok{library}\NormalTok{(foreign)}
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## -- Attaching core tidyverse packages ------------------------ tidyverse 2.0.0 --
+## v dplyr     1.1.4     v readr     2.1.5
+## v forcats   1.0.0     v stringr   1.5.1
+## v ggplot2   3.5.2     v tibble    3.3.0
+## v lubridate 1.9.4     v tidyr     1.3.1
+## v purrr     1.0.4
+\end{verbatim}
+
+\begin{verbatim}
+## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x tidyr::expand() masks Matrix::expand()
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()
+## x tidyr::pack()   masks Matrix::pack()
+## x tidyr::unpack() masks Matrix::unpack()
+## i Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data }\OtherTok{\textless{}{-}} \FunctionTok{read.dta}\NormalTok{(}\StringTok{"/Users/hanhan/Desktop/CEPS数据库14{-}/cepsw1studentEN.dta"}\NormalTok{) }
+
+
+\CommentTok{\# check data}
+\FunctionTok{head}\NormalTok{(data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   ids clsids schids ctyids                                     frame
+## 1   1      1      1      1 Supplemental sampling frame of the nation
+## 2   2      1      1      1 Supplemental sampling frame of the nation
+## 3   3      1      1      1 Supplemental sampling frame of the nation
+## 4   4      1      1      1 Supplemental sampling frame of the nation
+## 5   5      1      1      1 Supplemental sampling frame of the nation
+## 6   6      1      1      1 Supplemental sampling frame of the nation
+##                                                                                          subsample
+## 1 sub-sampling frame of districts with large influxes of migrants in the country (except Shanghai)
+## 2 sub-sampling frame of districts with large influxes of migrants in the country (except Shanghai)
+## 3 sub-sampling frame of districts with large influxes of migrants in the country (except Shanghai)
+## 4 sub-sampling frame of districts with large influxes of migrants in the country (except Shanghai)
+## 5 sub-sampling frame of districts with large influxes of migrants in the country (except Shanghai)
+## 6 sub-sampling frame of districts with large influxes of migrants in the country (except Shanghai)
+##    sweight           fall grade9 stcog    cog3pl tr_chn tr_mat tr_eng   stdchn
+## 1 218.7389 Spring of 2014 grade7    11  0.128507     84     89     86 76.88213
+## 2 216.5182 Spring of 2014 grade7    17  1.235879     82     92     86 73.26900
+## 3 216.5182 Spring of 2014 grade7    12  0.083937     81     71     89 71.46245
+## 4 218.7389 Spring of 2014 grade7    10 -0.522185     80     91     67 69.65589
+## 5 217.5530 Spring of 2014 grade7    10  0.036172     84     95     89 76.88213
+## 6 218.7389 Spring of 2014 grade7    12  0.247188     83     89     68 75.07556
+##     stdmat   stdeng    a01 a02a a02b                 a03
+## 1 67.29719 74.87732 Female 2001    5 The Han nationality
+## 2 71.41679 74.87732   Male 2001    3 The Han nationality
+## 3 42.57957 78.01274   Male 2001    3 The Han nationality
+## 4 70.04359 55.01965 Female 2001    7 The Han nationality
+## 5 75.53640 78.01274   <NA> 2000    9 The Han nationality
+## 6 67.29719 56.06479 Female 2001    6 The Han nationality
+##                                a04                              a05
+## 1 Not in the local county/district Not in the local county/district
+## 2     In the local county/district     In the local county/district
+## 3     In the local county/district Not in the local county/district
+## 4 Not in the local county/district Not in the local county/district
+## 5                        Not clear     In the local county/district
+## 6 Not in the local county/district     In the local county/district
+##                      a06 a07                          a08    a09 a09a
+## 1      Residential Hukou   3 In the local county/district  Light  6.8
+## 2      Residential Hukou   0 In the local county/district Normal  0.0
+## 3     Agricultural Hukou   0 In the local county/district  Heavy  0.0
+## 4 Non-agricultural Hukou   4 In the local county/district Normal  0.0
+## 5     Agricultural Hukou   0 In the local county/district Normal  0.0
+## 6      Residential Hukou   6 In the local county/district Normal  7.0
+##            a10           a11             a1201          a1202          a1203
+## 1 No,I haven't Somewhat rich    Strongly agree Strongly agree Strongly agree
+## 2 No,I haven't      Moderate    Strongly agree Strongly agree Strongly agree
+## 3 No,I haven't      Moderate Somewhat disagree Strongly agree Somewhat agree
+## 4   Yes,I have      Moderate    Strongly agree Somewhat agree Strongly agree
+## 5   Yes,I have Somewhat rich    Somewhat agree Somewhat agree Somewhat agree
+## 6 No,I haven't      Moderate    Strongly agree Somewhat agree Strongly agree
+##            a1204          a1205             a1206          a1207 a13 a14
+## 1 Strongly agree Strongly agree    Strongly agree Strongly agree 154  76
+## 2 Strongly agree Strongly agree    Strongly agree Strongly agree 169  90
+## 3 Somewhat agree Somewhat agree    Strongly agree Strongly agree 176 120
+## 4 Somewhat agree Somewhat agree Somewhat disagree Somewhat agree 160  90
+## 5 Strongly agree Strongly agree    Strongly agree Strongly agree 167 150
+## 6 Somewhat agree Somewhat agree    Somewhat agree Strongly agree 165 140
+##                                                                   a15 a15a a15b
+## 1                                                           Yes, I am  375  375
+## 2                                                        No, I am not          
+## 3                                                           Yes, I am  320  400
+## 4                                                           Yes, I am  200  160
+## 5                                                           Yes, I am  325  350
+## 6 Yes, I am. But I am not clear about the strength of my glasses/lens          
+##             a16       a17     a1801     a1802     a1803     a1804     a1805
+## 1 No, I haven't Very good     Never     Never     Never     Never     Never
+## 2 No, I haven't Very good     Never     Never     Never     Never     Never
+## 3 No, I haven't      Good    Seldom    Seldom Sometimes    Seldom     Never
+## 4 No, I haven't  Moderate Sometimes    Seldom Sometimes    Seldom Sometimes
+## 5 No, I haven't      Good    Seldom Sometimes Sometimes Sometimes    Seldom
+## 6 No, I haven't Very good Sometimes     Never Sometimes Sometimes Sometimes
+##            b01 b0201 b0202 b0203 b0204                  b03 b0401 b0402 b0403
+## 1    Yes, I am    NA    NA    NA    NA                 <NA>   Yes   Yes    No
+## 2    Yes, I am    NA    NA    NA    NA                 <NA>    No    No    No
+## 3 No, I am not     1     0     0     0 No, I don't have any   Yes   Yes    No
+## 4    Yes, I am    NA    NA    NA    NA                 <NA>   Yes   Yes    No
+## 5    Yes, I am    NA    NA    NA    NA                 <NA>   Yes   Yes    No
+## 6    Yes, I am    NA    NA    NA    NA                 <NA>   Yes    No    No
+##   b0404 b0405 b0406 b0501 b0502 b0503 b0504                       b06
+## 1    No    No    No    No    No    No   Yes Junior high school degree
+## 2   Yes    No    No   Yes   Yes    No    No           Bachelor degree
+## 3    No    No    No    No    No   Yes    No Junior high school degree
+## 4    No    No    No    No    No    No   Yes Senior high school degree
+## 5   Yes    No    No    No    No    No   Yes     Junior college degree
+## 6   Yes    No    No    No   Yes    No    No           Bachelor degree
+##                             b07 b08a b08b           b09             b1001
+## 1     Junior high school degree    6    6 Somewhat rich No, I don't agree
+## 2 Vocational high school degree    3    3      Moderate No, I don't agree
+## 3     Junior high school degree    7    7      Moderate No, I don't agree
+## 4         Junior college degree    2    2      Moderate No, I don't agree
+## 5               Bachelor degree    6    3 Somewhat rich No, I don't agree
+## 6               Bachelor degree    1    3      Moderate No, I don't agree
+##               b1002             b1003         b11            b12
+## 1 No, I don't agree      Yes, I agree Yes, I have A great number
+## 2 No, I don't agree      Yes, I agree Yes, I have    Quite a few
+## 3 No, I don't agree No, I don't agree Yes, I have           Some
+## 4 No, I don't agree      Yes, I agree Yes, I have    Quite a few
+## 5 No, I don't agree      Yes, I agree Yes, I have A great number
+## 6      Yes, I agree No, I don't agree Yes, I have    Quite a few
+##                 b13 b14a1 b14a2 b14b1 b14b2 b15a1 b15a2 b15b1 b15b2 b15c1 b15c2
+## 1 Yes, we have both     2    50     1    30     0    50     0    30     1    30
+## 2 Yes, we have both     3     0     4     0     0     0     0     0     1    30
+## 3 Yes, we have both     1     0     1     0     1     0     0     0     0    30
+## 4 Yes, we have both     3     0     3     0     1     0     0     0     1     0
+## 5 Yes, we have both     2    10     1    30     0     0     0     0     2     0
+## 6 Yes, we have both     2     0     4     0     0     0     0     0     1     0
+##   b15d1 b15d2 b15e1 b15e2 b15f1 b15f2 b15g1 b15g2 b16a1 b16a2 b16b1 b16b2 b16c1
+## 1     1     0     0    15     0    15     0    40     0    30     0    30     1
+## 2     1     0     0     0     0    30     0    10     1     0     3     0     5
+## 3     0    30     1     0     2     0     0    30     1    15     0     0     1
+## 4     1     0     1     0     0    40     0    10     1     0     0     0     0
+## 5     1     0     0     0     1     0     0    30     0     0     0     0     2
+## 6     0     0     0    30     0     0     0    30     0     0     0     0     2
+##   b16c2 b16d1 b16d2 b16e1 b16e2 b16f1 b16f2 b16g1 b16g2                b1701
+## 1     0     1     0     0    20     0    30     1     0 Once every half year
+## 2     0     2     0     1     0     1     0     2     0 Once every half year
+## 3     0     1     0     2     0     2     0     0     0         Once a month
+## 4     0     2     0     0    10     0    40     0    30          Once a year
+## 5     0     1     0     0     0     7    30     0    45 Once every half year
+## 6    30     1    30     3    30     0     0     1     0 Once every half year
+##                  b1702 b18a b18b b1900 b1901 b1902 b1903 b1904 b1905 b1906
+## 1          Once a year    9    0    No    No   Yes    No    No    No    No
+## 2 Once every half year    9    0    No   Yes    No    No   Yes    No    No
+## 3         Once a month    8    0   Yes    No    No    No    No    No    No
+## 4 Once every half year    9    0    No    No    No    No    No    No    No
+## 5 Once every half year    7   30   Yes    No    No    No    No    No    No
+## 6         Once a month    7   30   Yes    No    No    No    No    No    No
+##   b1907 b1908 b1909 b1910 b1911 b2000 b2001 b2002 b2003 b2004 b2005 b2006 b2007
+## 1    No   Yes    No    No    No    No    No   Yes   Yes   Yes    No    No    No
+## 2    No    No    No   Yes    No    No    No    No    No    No    No   Yes    No
+## 3    No    No    No    No    No   Yes    No    No    No    No    No    No    No
+## 4    No   Yes    No    No    No    No   Yes   Yes   Yes    No   Yes    No   Yes
+## 5    No    No    No    No    No    No   Yes    No    No   Yes    No    No   Yes
+## 6    No    No    No    No    No    No    No    No    No    No    No   Yes    No
+##   b2101 b2102 b2103 b2104 b2105 b2106              b2201           b2202
+## 1    No    No   Yes   Yes    No   Yes    Almost everyday Almost everyday
+## 2    No    No    No    No   Yes    No    One or two days One or two days
+## 3    No    No    No   Yes    No   Yes Three or four days           Never
+## 4    No    No    No   Yes    No   Yes    Almost everyday Almost everyday
+## 5    No    No   Yes    No   Yes   Yes Three or four days One or two days
+## 6    No    No   Yes    No   Yes    No    Almost everyday One or two days
+##                                       b2301
+## 1 They do care about it, but are not strict
+## 2             They are very strict about it
+## 3             They are very strict about it
+## 4             They are very strict about it
+## 5 They do care about it, but are not strict
+## 6             They are very strict about it
+##                                       b2302                         b2303
+## 1 They do care about it, but are not strict They are very strict about it
+## 2 They do care about it, but are not strict They are very strict about it
+## 3 They do care about it, but are not strict               They don't care
+## 4             They are very strict about it They are very strict about it
+## 5 They do care about it, but are not strict They are very strict about it
+## 6             They are very strict about it They are very strict about it
+##                                       b2304
+## 1             They are very strict about it
+## 2 They do care about it, but are not strict
+## 3 They do care about it, but are not strict
+## 4             They are very strict about it
+## 5 They do care about it, but are not strict
+## 6             They are very strict about it
+##                                       b2305
+## 1             They are very strict about it
+## 2                           They don't care
+## 3             They are very strict about it
+## 4 They do care about it, but are not strict
+## 5             They are very strict about it
+## 6             They are very strict about it
+##                                       b2306                         b2307
+## 1 They do care about it, but are not strict They are very strict about it
+## 2 They do care about it, but are not strict They are very strict about it
+## 3                           They don't care They are very strict about it
+## 4 They do care about it, but are not strict They are very strict about it
+## 5 They do care about it, but are not strict They are very strict about it
+## 6             They are very strict about it They are very strict about it
+##                                       b2308     b24a1     b24b1 b24a2     b24b2
+## 1             They are very strict about it     Often     Often Often     Often
+## 2             They are very strict about it     Often     Often Often     Often
+## 3 They do care about it, but are not strict Sometimes Sometimes Never     Never
+## 4             They are very strict about it     Often     Never Often Sometimes
+## 5 They do care about it, but are not strict     Often     Often Often     Often
+## 6             They are very strict about it     Often Sometimes Often Sometimes
+##       b24a3     b24b3     b24a4     b24b4     b24a5     b24b5
+## 1     Often     Often     Often     Often     Often     Often
+## 2     Often     Often Sometimes Sometimes Sometimes Sometimes
+## 3 Sometimes Sometimes     Never     Never     Never     Never
+## 4     Often Sometimes     Often     Often Sometimes Sometimes
+## 5     Often Sometimes Sometimes Sometimes Sometimes Sometimes
+## 6     Often Sometimes     Often     Often     Often     Often
+##                       b2501                     b2502
+## 1                Very close                Very close
+## 2                Very close                Very close
+## 3 Not too close nor too far Not too close nor too far
+## 4                Very close                Very close
+## 5                Very close                Very close
+## 6                Very close                Very close
+##                         b2601                       b2602
+## 1                     Parents                     Parents
+## 2 Schoolmates or good friends                    Teachers
+## 3 Schoolmates or good friends Schoolmates or good friends
+## 4 Schoolmates or good friends Schoolmates or good friends
+## 5 Schoolmates or good friends                     Parents
+## 6 Schoolmates or good friends                     Parents
+##                         b2603
+## 1                     Parents
+## 2                     Parents
+## 3 Schoolmates or good friends
+## 4                     Parents
+## 5                      No one
+## 6 Schoolmates or good friends
+##                                                            b27
+## 1                                             Mandarin Chinese
+## 2                                             Mandarin Chinese
+## 3                                       Dialect of my hometown
+## 4 Sometimes dialect of my hometown, sometimes mandarin Chinese
+## 5                                             Mandarin Chinese
+## 6                                             Mandarin Chinese
+##                   b2801                 b2802                 b2803
+## 1 More than once a week More than once a week More than once a week
+## 2 More than once a week More than once a week More than once a week
+## 3 More than once a week           Once a week More than once a week
+## 4 More than once a week          Once a month More than once a week
+## 5 More than once a week          Once a month          Once a month
+## 6 More than once a week                 Never More than once a week
+##                   b2804                b2805                b2806
+## 1 More than once a week          Once a week          Once a week
+## 2 More than once a week Once every half year Once every half year
+## 3          Once a month Once every half year Once every half year
+## 4          Once a month         Once a month         Once a month
+## 5           Once a week Once every half year Once every half year
+## 6          Once a month         Once a month         Once a month
+##                           b29               b30
+## 1                A great deal Above the average
+## 2                A great deal Above the average
+## 3                A great deal About the average
+## 4                A great deal About the average
+## 5 Not too much nor too little Above the average
+## 6                A great deal About the average
+##                                                    b31               b32
+## 1                                  Get a Master degree Somewhat stressed
+## 2                                Get a bachelor degree Not very stressed
+## 3                                Get a bachelor degree Somewhat stressed
+## 4 Go to technical secondary school or technical school Not very stressed
+## 5                                Get a bachelor degree            Normal
+## 6                                  Get a Master degree Not very stressed
+##                                                    b33
+## 1                        Artistic performer/actor/host
+## 2                                            Not clear
+## 3 Manager or administrator of enterprises/corporations
+## 4                        Artistic performer/actor/host
+## 5                                Teacher/doctor/lawyer
+## 6                                            Not clear
+##                                                 b34                b35
+## 1 In big cities, such as Beijing/Shanghai/Guangzhou     Very confident
+## 2 In big cities, such as Beijing/Shanghai/Guangzhou     Very confident
+## 3 In big cities, such as Beijing/Shanghai/Guangzhou Somewhat confident
+## 4                                            Abroad Somewhat confident
+## 5 In big cities, such as Beijing/Shanghai/Guangzhou Somewhat confident
+## 6                                         Not clear     Very confident
+##                         c01 c01a c02 c03 c04 c05 c06                     c07
+## 1 Yes, since [__] years old    3   6   0   0   0   0 Yes, since grade [___] 
+## 2 Yes, since [__] years old   NA   6   0   0   0   0 Yes, since grade [___] 
+## 3 Yes, since [__] years old    5   6   0   0   0   0 Yes, since grade [___] 
+## 4 Yes, since [__] years old    3   7   0   0   0   0 Yes, since grade [___] 
+## 5 Yes, since [__] years old    2   6   0   0   0   0 Yes, since grade [___] 
+## 6 Yes, since [__] years old    3   6   0   0   0   0 Yes, since grade [___] 
+##   c07a c08        c09                c1001                c1002
+## 1    1   3 Yes, I did   Not very difficult   Not very difficult
+## 2    1   9 Yes, I did Not difficult at all   Not very difficult
+## 3    1  10 Yes, I did   Not very difficult Not difficult at all
+## 4    1   5 Yes, I did Not difficult at all   Not very difficult
+## 5    1   7 Yes, I did Not difficult at all Not difficult at all
+## 6    1  15 Yes, I did   Not very difficult   Not very difficult
+##                  c1003                c1101                c1102
+## 1   Not very difficult      A bit difficult   Not very difficult
+## 2 Not difficult at all Not difficult at all Not difficult at all
+## 3 Not difficult at all      A bit difficult      A bit difficult
+## 4 Not difficult at all      A bit difficult      A bit difficult
+## 5   Not very difficult   Not very difficult Not difficult at all
+## 6      A bit difficult      A bit difficult      A bit difficult
+##                  c1103               c12             c1301          c1302
+## 1   Not very difficult Above the average    Strongly agree Strongly agree
+## 2 Not difficult at all Above the average    Strongly agree Strongly agree
+## 3   Not very difficult About the average    Strongly agree Strongly agree
+## 4       Very difficult Below the average Somewhat disagree Somewhat agree
+## 5   Not very difficult Above the average    Strongly agree Strongly agree
+## 6      A bit difficult About the average    Somewhat agree Somewhat agree
+##               c1303          c1304          c1305          c1306
+## 1    Strongly agree Strongly agree Strongly agree Strongly agree
+## 2    Strongly agree Strongly agree Strongly agree Strongly agree
+## 3    Strongly agree Somewhat agree Somewhat agree Somewhat agree
+## 4 Somewhat disagree Strongly agree Strongly agree Strongly agree
+## 5    Strongly agree Somewhat agree Somewhat agree Somewhat agree
+## 6    Somewhat agree Somewhat agree Somewhat agree Somewhat agree
+##               c1307          c1308             c1309 c14 c15 c16
+## 1    Strongly agree Strongly agree    Strongly agree  No  No  No
+## 2    Strongly agree Strongly agree    Strongly agree Yes Yes Yes
+## 3 Somewhat disagree Somewhat agree    Somewhat agree  No  No  No
+## 4    Strongly agree Strongly agree    Strongly agree  No  No  No
+## 5    Somewhat agree Somewhat agree Somewhat disagree  No Yes  No
+## 6    Somewhat agree Somewhat agree    Somewhat agree  No Yes Yes
+##               c1701             c1702             c1703             c1704
+## 1 Strongly disagree Strongly disagree Strongly disagree    Strongly agree
+## 2 Strongly disagree Strongly disagree Strongly disagree    Somewhat agree
+## 3 Strongly disagree Strongly disagree Strongly disagree Somewhat disagree
+## 4 Strongly disagree Strongly disagree Strongly disagree Somewhat disagree
+## 5 Strongly disagree Strongly disagree Strongly disagree    Somewhat agree
+## 6 Strongly disagree Strongly disagree Strongly disagree    Somewhat agree
+##               c1705          c1706          c1707             c1708
+## 1 Strongly disagree Strongly agree Strongly agree    Strongly agree
+## 2 Strongly disagree Strongly agree Somewhat agree    Somewhat agree
+## 3 Somewhat disagree Strongly agree Strongly agree Somewhat disagree
+## 4 Strongly disagree Strongly agree Strongly agree    Strongly agree
+## 5 Somewhat disagree Strongly agree Somewhat agree    Somewhat agree
+## 6 Somewhat disagree Somewhat agree Somewhat agree    Somewhat agree
+##               c1709             c1710             c1711             c1712 c18
+## 1    Strongly agree    Strongly agree Strongly disagree Strongly disagree  No
+## 2    Strongly agree    Strongly agree Strongly disagree Strongly disagree  No
+## 3 Somewhat disagree Strongly disagree Somewhat disagree    Somewhat agree  No
+## 4    Strongly agree    Strongly agree Strongly disagree Strongly disagree  No
+## 5    Strongly agree    Strongly agree Somewhat disagree Somewhat disagree  No
+## 6    Somewhat agree    Somewhat agree Strongly disagree Strongly disagree  No
+##   c19  c20b1                            c20c1 c20d1 c20e1  c20b2
+## 1  10 Female Not in the local county/district   Yes   Yes Female
+## 2  31   Male     In the local county/district   Yes   Yes Female
+## 3   2   Male Not in the local county/district   Yes   Yes   Male
+## 4  32 Female Not in the local county/district   Yes   Yes Female
+## 5   2 Female     In the local county/district   Yes   Yes Female
+## 6   3 Female Not in the local county/district   Yes   Yes Female
+##                              c20c2 c20d2 c20e2  c20b3
+## 1 Not in the local county/district   Yes   Yes Female
+## 2 Not in the local county/district   Yes   Yes   Male
+## 3     In the local county/district   Yes   Yes   Male
+## 4 Not in the local county/district   Yes   Yes Female
+## 5     In the local county/district   Yes   Yes Female
+## 6     In the local county/district   Yes   Yes Female
+##                              c20c3 c20d3 c20e3  c20b4
+## 1 Not in the local county/district   Yes   Yes Female
+## 2     In the local county/district   Yes   Yes   Male
+## 3 Not in the local county/district    No    No   Male
+## 4     In the local county/district   Yes   Yes Female
+## 5 Not in the local county/district   Yes   Yes   <NA>
+## 6     In the local county/district   Yes   Yes Female
+##                              c20c4 c20d4 c20e4  c20b5
+## 1 Not in the local county/district   Yes   Yes Female
+## 2     In the local county/district   Yes   Yes Female
+## 3 Not in the local county/district    No    No   Male
+## 4     In the local county/district    No    No Female
+## 5                             <NA>  <NA>  <NA>   <NA>
+## 6     In the local county/district   Yes   Yes Female
+##                              c20c5 c20d5 c20e5              c2101
+## 1     In the local county/district   Yes   Yes       Most of them
+## 2 Not in the local county/district   Yes   Yes       Most of them
+## 3 Not in the local county/district    No    No One or two of them
+## 4     In the local county/district   Yes   Yes One or two of them
+## 5                             <NA>  <NA>  <NA> One or two of them
+## 6 Not in the local county/district   Yes   Yes       Most of them
+##                c2102        c2103        c2104              c2105
+## 1       Most of them Most of them None of them       None of them
+## 2       Most of them Most of them None of them       None of them
+## 3 One or two of them Most of them None of them One or two of them
+## 4 One or two of them Most of them None of them       None of them
+## 5       Most of them Most of them None of them       None of them
+## 6       Most of them Most of them None of them       None of them
+##                c2106              c2107        c2108        c2109        c2110
+## 1       None of them       None of them None of them None of them None of them
+## 2       None of them       None of them None of them None of them None of them
+## 3 One or two of them One or two of them None of them None of them None of them
+## 4       None of them       None of them None of them None of them None of them
+## 5       None of them       None of them None of them None of them None of them
+## 6       None of them       None of them None of them None of them None of them
+##                                                    c22
+## 1                                  Get a Doctor degree
+## 2                                  Get a Doctor degree
+## 3                                Get a bachelor degree
+## 4 Go to technical secondary school or technical school
+## 5                                Get a bachelor degree
+## 6                                Get a bachelor degree
+##                                                    c23
+## 1                        Artistic performer/actor/host
+## 2                                   Scientist/engineer
+## 3 Manager or administrator of enterprises/corporations
+## 4                                Teacher/doctor/lawyer
+## 5                                Teacher/doctor/lawyer
+## 6                                Teacher/doctor/lawyer
+##                                                 c24                c25
+## 1 In big cities, such as Beijing/Shanghai/Guangzhou     Very confident
+## 2 In big cities, such as Beijing/Shanghai/Guangzhou     Very confident
+## 3 In big cities, such as Beijing/Shanghai/Guangzhou     Very confident
+## 4 In big cities, such as Beijing/Shanghai/Guangzhou Somewhat confident
+## 5 In big cities, such as Beijing/Shanghai/Guangzhou Somewhat confident
+## 6 In big cities, such as Beijing/Shanghai/Guangzhou     Very confident
+##                   c26a1                 c26b1          c26a2
+## 1 No, they won\xa1\xaft No, they won\xa1\xaft Yes, they will
+## 2 No, they won\xa1\xaft No, they won\xa1\xaft Yes, they will
+## 3        Yes, they will        Yes, they will Yes, they will
+## 4        Yes, they will        Yes, they will Yes, they will
+## 5 No, they won\xa1\xaft No, they won\xa1\xaft Yes, they will
+## 6 No, they won\xa1\xaft No, they won\xa1\xaft Yes, they will
+##                   c26b2                 c26a3          c26b3          c26a4
+## 1        Yes, they will        Yes, they will Yes, they will Yes, they will
+## 2        Yes, they will        Yes, they will Yes, they will Yes, they will
+## 3        Yes, they will        Yes, they will Yes, they will Yes, they will
+## 4 No, they won\xa1\xaft No, they won\xa1\xaft Yes, they will Yes, they will
+## 5        Yes, they will        Yes, they will Yes, they will Yes, they will
+## 6        Yes, they will        Yes, they will Yes, they will Yes, they will
+##            c26b4  c27 c28a1 c28b1 c28a2 c28b2 c28a3 c28b3 c28a4 c28b4  c29
+## 1 Yes, they will <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA> <NA>
+## 2 Yes, they will <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA> <NA>
+## 3 Yes, they will <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA> <NA>
+## 4 Yes, they will <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA> <NA>
+## 5 Yes, they will <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA> <NA>
+## 6 Yes, they will <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA>  <NA> <NA>
+##   c3000 c3001 c3002 c3003  c31  c32  c33  stsex stsexflag
+## 1  <NA>  <NA>  <NA>  <NA> <NA> <NA> <NA> Female         0
+## 2  <NA>  <NA>  <NA>  <NA> <NA> <NA> <NA>   Male         0
+## 3  <NA>  <NA>  <NA>  <NA> <NA> <NA> <NA>   Male         0
+## 4  <NA>  <NA>  <NA>  <NA> <NA> <NA> <NA> Female         0
+## 5  <NA>  <NA>  <NA>  <NA> <NA> <NA> <NA> Female         1
+## 6  <NA>  <NA>  <NA>  <NA> <NA> <NA> <NA> Female         0
+##                          sthkplace               sthktype
+## 1 Not in the local county/district Non-agricultural Hukou
+## 2     In the local county/district Non-agricultural Hukou
+## 3 Not in the local county/district     Agricultural Hukou
+## 4 Not in the local county/district Non-agricultural Hukou
+## 5     In the local county/district     Agricultural Hukou
+## 6     In the local county/district Non-agricultural Hukou
+##                 stmigrant                  stlb_4c                      stlb_2c
+## 1 floating cross-province parents are both at home     parents are both at home
+## 2      local non-floating       neither is at home either or neither is at home
+## 3 floating cross-province parents are both at home     parents are both at home
+## 4 floating cross-province parents are both at home     parents are both at home
+## 5      local non-floating parents are both at home     parents are both at home
+## 6      local non-floating   only mother is at home either or neither is at home
+##                                                   st0             stbrd
+## 1  non-agricultural floating parents are both at home living off campus
+## 2 non-agricultural local parents are not both at home living off campus
+## 3      agricultural floating parents are both at home living off campus
+## 4  non-agricultural floating parents are both at home living off campus
+## 5         agricultural local parents are both at home living off campus
+## 6 non-agricultural local parents are not both at home living off campus
+##        steco_5c steco_3c       stonly stsib    stsibrank
+## 1 Somewhat rich     rich    Yes, I am    NA         <NA>
+## 2      Moderate   middle    Yes, I am    NA         <NA>
+## 3      Moderate   middle No, I am not     1 the youngest
+## 4      Moderate   middle    Yes, I am    NA         <NA>
+## 5 Somewhat rich     rich    Yes, I am    NA         <NA>
+## 6      Moderate   middle    Yes, I am    NA         <NA>
+##                      stmedu                        stfedu
+## 1 Junior high school degree     Junior high school degree
+## 2           Bachelor degree Vocational high school degree
+## 3 Junior high school degree     Junior high school degree
+## 4 Senior high school degree         Junior college degree
+## 5     Junior college degree               Bachelor degree
+## 6           Bachelor degree               Bachelor degree
+##                    stprhedu stfdrunk stprfight stprrel
+## 1 Junior high school degree       No        No     Yes
+## 2           Bachelor degree       No        No     Yes
+## 3 Junior high school degree       No        No      No
+## 4     Junior college degree       No        No     Yes
+## 5           Bachelor degree       No        No     Yes
+## 6           Bachelor degree       No       Yes      No
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{names}\NormalTok{(data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   [1] "ids"       "clsids"    "schids"    "ctyids"    "frame"     "subsample"
+##   [7] "sweight"   "fall"      "grade9"    "stcog"     "cog3pl"    "tr_chn"   
+##  [13] "tr_mat"    "tr_eng"    "stdchn"    "stdmat"    "stdeng"    "a01"      
+##  [19] "a02a"      "a02b"      "a03"       "a04"       "a05"       "a06"      
+##  [25] "a07"       "a08"       "a09"       "a09a"      "a10"       "a11"      
+##  [31] "a1201"     "a1202"     "a1203"     "a1204"     "a1205"     "a1206"    
+##  [37] "a1207"     "a13"       "a14"       "a15"       "a15a"      "a15b"     
+##  [43] "a16"       "a17"       "a1801"     "a1802"     "a1803"     "a1804"    
+##  [49] "a1805"     "b01"       "b0201"     "b0202"     "b0203"     "b0204"    
+##  [55] "b03"       "b0401"     "b0402"     "b0403"     "b0404"     "b0405"    
+##  [61] "b0406"     "b0501"     "b0502"     "b0503"     "b0504"     "b06"      
+##  [67] "b07"       "b08a"      "b08b"      "b09"       "b1001"     "b1002"    
+##  [73] "b1003"     "b11"       "b12"       "b13"       "b14a1"     "b14a2"    
+##  [79] "b14b1"     "b14b2"     "b15a1"     "b15a2"     "b15b1"     "b15b2"    
+##  [85] "b15c1"     "b15c2"     "b15d1"     "b15d2"     "b15e1"     "b15e2"    
+##  [91] "b15f1"     "b15f2"     "b15g1"     "b15g2"     "b16a1"     "b16a2"    
+##  [97] "b16b1"     "b16b2"     "b16c1"     "b16c2"     "b16d1"     "b16d2"    
+## [103] "b16e1"     "b16e2"     "b16f1"     "b16f2"     "b16g1"     "b16g2"    
+## [109] "b1701"     "b1702"     "b18a"      "b18b"      "b1900"     "b1901"    
+## [115] "b1902"     "b1903"     "b1904"     "b1905"     "b1906"     "b1907"    
+## [121] "b1908"     "b1909"     "b1910"     "b1911"     "b2000"     "b2001"    
+## [127] "b2002"     "b2003"     "b2004"     "b2005"     "b2006"     "b2007"    
+## [133] "b2101"     "b2102"     "b2103"     "b2104"     "b2105"     "b2106"    
+## [139] "b2201"     "b2202"     "b2301"     "b2302"     "b2303"     "b2304"    
+## [145] "b2305"     "b2306"     "b2307"     "b2308"     "b24a1"     "b24b1"    
+## [151] "b24a2"     "b24b2"     "b24a3"     "b24b3"     "b24a4"     "b24b4"    
+## [157] "b24a5"     "b24b5"     "b2501"     "b2502"     "b2601"     "b2602"    
+## [163] "b2603"     "b27"       "b2801"     "b2802"     "b2803"     "b2804"    
+## [169] "b2805"     "b2806"     "b29"       "b30"       "b31"       "b32"      
+## [175] "b33"       "b34"       "b35"       "c01"       "c01a"      "c02"      
+## [181] "c03"       "c04"       "c05"       "c06"       "c07"       "c07a"     
+## [187] "c08"       "c09"       "c1001"     "c1002"     "c1003"     "c1101"    
+## [193] "c1102"     "c1103"     "c12"       "c1301"     "c1302"     "c1303"    
+## [199] "c1304"     "c1305"     "c1306"     "c1307"     "c1308"     "c1309"    
+## [205] "c14"       "c15"       "c16"       "c1701"     "c1702"     "c1703"    
+## [211] "c1704"     "c1705"     "c1706"     "c1707"     "c1708"     "c1709"    
+## [217] "c1710"     "c1711"     "c1712"     "c18"       "c19"       "c20b1"    
+## [223] "c20c1"     "c20d1"     "c20e1"     "c20b2"     "c20c2"     "c20d2"    
+## [229] "c20e2"     "c20b3"     "c20c3"     "c20d3"     "c20e3"     "c20b4"    
+## [235] "c20c4"     "c20d4"     "c20e4"     "c20b5"     "c20c5"     "c20d5"    
+## [241] "c20e5"     "c2101"     "c2102"     "c2103"     "c2104"     "c2105"    
+## [247] "c2106"     "c2107"     "c2108"     "c2109"     "c2110"     "c22"      
+## [253] "c23"       "c24"       "c25"       "c26a1"     "c26b1"     "c26a2"    
+## [259] "c26b2"     "c26a3"     "c26b3"     "c26a4"     "c26b4"     "c27"      
+## [265] "c28a1"     "c28b1"     "c28a2"     "c28b2"     "c28a3"     "c28b3"    
+## [271] "c28a4"     "c28b4"     "c29"       "c3000"     "c3001"     "c3002"    
+## [277] "c3003"     "c31"       "c32"       "c33"       "stsex"     "stsexflag"
+## [283] "sthkplace" "sthktype"  "stmigrant" "stlb_4c"   "stlb_2c"   "st0"      
+## [289] "stbrd"     "steco_5c"  "steco_3c"  "stonly"    "stsib"     "stsibrank"
+## [295] "stmedu"    "stfedu"    "stprhedu"  "stfdrunk"  "stprfight" "stprrel"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{table}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{stsex)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Female   Male 
+##   9445  10042
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data }\OtherTok{\textless{}{-}}\NormalTok{ data }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{new\_sex =} \FunctionTok{ifelse}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{stsex }\SpecialCharTok{==} \StringTok{"Female"}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{))}
+\FunctionTok{table}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{new\_sex)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##     0     1 
+##  9445 10042
+\end{verbatim}
+\end{frame}
+
+\end{document}
