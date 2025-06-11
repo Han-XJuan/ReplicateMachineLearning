@@ -11,6 +11,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 
 
+
 ## Slide with R Output
 
 ```{r cars, echo = TRUE}
